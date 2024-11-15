@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>DS Project on BST</title>
+
+	<link rel="shortcut icon" href="/ADIT_LOGO.jpg" type="image/x-icon">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link
+		href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+		rel="stylesheet">
+
+	<!-- ````````````````````CSS```````````````` -->
+
+
+	<link rel="stylesheet" href="css/normalize.css">
+	<link rel="stylesheet" href="css/common.css">
+	<link rel="stylesheet" href="css/viz.css">
+	<link rel="stylesheet" href="css/bst.css">
+	<link rel="stylesheet" href="style.css">
+
+
+	<!-- ````````````````````JS```````````````` -->
+	<script src="js/external/jquery-1.10.2.js"></script>
+	<script src="js/external/jquery-ui.js"></script>
+	<script src="js/viz.js"></script>
+	<script src="js/common.js"></script>
+	<script src="js/actions/bst_actions.js"></script>
+	<script src="//connect.facebook.net/en_US/all.js"></script>
+	<script src="js/external/d3.v3.js"></script>
+
+
+</head>
+
+<body>
+
+	<body style="background-repeat: no-repeat;">
+		<div class="topp">
+
+			<div class="main_container">
+
+				<div class="header_one">
+					<img id="main_logo" src="/ADIT_LOGO.jpg" alt="LOGO">
+					<p style="color:white ;">DS Project</p>
+				</div>
+				<div id="top-bar"
+					style="background-color: rgb(83, 83, 83); border-radius: 5px; margin-top: 20px; display: flex; align-items: center; justify-content: center; font-family: Inter;">
+
+					<span id="title">
+						<a class="trees" id="title-BST">BST Graphical Representiation</a>&nbsp&nbsp
+						<!-- <a class = "trees" id="title-AVL" class="selected-viz">AVL Tree</a> -->
+					</span>
+				</div>
+				<div class="linee">
+
+				</div>
+
+				<div id="viz"></div>
+
+				<div id="current-action" class="panel">
+					<p
+						style="background-color: rgb(233, 200, 200); padding: 0.5rem; color: rgb(66, 66, 66); border: 2px solid rgb(143, 137, 137); ">
+					</p>
+				</div>
+
+				<div id="actions" class="panel">
+					<p id="search">Search</p>
+					<p id="insert">Insert</p>
+					<p id="remove">Remove</p>
+					<p id="inorder" class="execAction" onclick=inorderTraversal()>In-order Traversal</p>
+				</div>
+				<div style="background-color: greenyellow;" id="actions-hide" class="panel-hide"><img
+						src="img/arrow_white_right.png" title="show/hide actions panel" /></div>
+				<div id="actions-extras">
+					<div id="find-min" class="execAction" style="white-space: nowrap;" onClick=findMin()>
+						<p>Find Min</p>
+					</div>
+					<div id="find-max" class="execAction" style="white-space: nowrap;" onClick=findMax()>
+						<p>Find Max</p>
+					</div>
+					<div id="search-input"><input type="text" id="v-search" title="Enter an integer" autocomplete="off"
+							value=5 /></div>
+					<div id="search-go" class="execAction" onclick=searchVertex()>
+						<p>GO</p>
+					</div>
+					<div id="search-err" class="err"></div>
+					<div id="insert-input"><input type="text" id="v-insert"
+							title="Enter an integer or comma-separated array of integers" autocomplete="off" value=20 />
+					</div>
+					<div id="insert-go" class="execAction" onclick=insertVertex()>
+						<p>GO</p>
+					</div>
+					<div id="insert-err" class="err"></div>
+					<div id="remove-input"><input type="text" id="v-remove"
+							title="Enter an integer or comma-separated array of integers" autocomplete="off" value=23 />
+					</div>
+					<div id="remove-go" class="execAction" onclick=removeVertex()>
+						<p>GO</p>
+					</div>
+					<div id="remove-err" class="err"></div>
+					<div id="inorder-err" class="err"></div>
+				</div>
+
+				<div class="numbers">
+
+					<div class="number" id="number1"> 1 </div>
+					<div class="number" id="number2"> 2 </div>
+					<div class="number" id="number3"> 3 </div>
+					<div class="number" id="number4"> 4 </div>
+					<div class="number" id="number5"> 5 </div>
+					<div class="number" id="number6"> 6 </div>
+					<div class="number" id="number7"> 7 </div>
+					<div class="number" id="number8"> 8 </div>
+					<div class="number" id="number9"> 9 </div>
+					<div class="number" id="number10"> 10 </div>
+					<div class="number" id="number11"> 11 </div>
+					<div class="number" id="number12"> 12 </div>
+					<div class="number" id="number13"> 13 </div>
+					<div class="number" id="number14"> 14 </div>
+					<div class="number" id="number15"> 15 </div>
+					<div class="number" id="number16"> 16 </div>
+					<div class="number" id="number17"> 17 </div>
+					<div class="number" id="number18"> 18 </div>
+					<div class="number" id="number19"> 19 </div>
+					<div class="number" id="number20"> 20 </div>
+					<div class="number" id="number21"> 21 </div>
+					<div class="number" id="number22"> 22 </div>
+					<div class="number" id="number23"> 23 </div>
+					<div class="number" id="number24"> 24 </div>
+					<div class="number" id="number25"> 25 </div>
+					<div class="number" id="number26"> 26 </div>
+					<div class="number" id="number27"> 27 </div>
+					<div class="number" id="number28"> 28 </div>
+					<div class="number" id="number29"> 29 </div>
+					<div class="number" id="number30"> 30 </div>
+					<div class="number" id="number31"> 31 </div>
+					<div class="number" id="number32"> 32 </div>
+					<div class="number" id="number33"> 33 </div>
+					<div class="number" id="number34"> 34 </div>
+					<div class="number" id="number35"> 35 </div>
+					<div class="number" id="number36"> 36 </div>
+					<div class="number" id="number37"> 37 </div>
+					<div class="number" id="number38"> 38 </div>
+					<div class="number" id="number39"> 39 </div>
+					<div class="number" id="number40"> 40 </div>
+					<div class="number" id="number41"> 41 </div>
+					<div class="number" id="number42"> 42 </div>
+					<div class="number" id="number43"> 43 </div>
+					<div class="number" id="number44"> 44 </div>
+					<div class="number" id="number45"> 45 </div>
+					<div class="number" id="number46"> 46 </div>
+					<div class="number" id="number47"> 47 </div>
+					<div class="number" id="number48"> 48 </div>
+					<div class="number" id="number49"> 49 </div>
+					<div class="number" id="number50"> 50 </div>
+					<div class="number" id="number51"> 51 </div>
+					<div class="number" id="number52"> 52 </div>
+					<div class="number" id="number53"> 53 </div>
+					<div class="number" id="number54"> 54 </div>
+					<div class="number" id="number55"> 55 </div>
+					<div class="number" id="number56"> 56 </div>
+					<div class="number" id="number57"> 57 </div>
+					<div class="number" id="number58"> 58 </div>
+					<div class="number" id="number59"> 59 </div>
+					<div class="number" id="number60"> 60 </div>
+					<div class="number" id="number61"> 61 </div>
+					<div class="number" id="number62"> 62 </div>
+					<div class="number" id="number63"> 63 </div>
+					<div class="number" id="number64"> 64 </div>
+					<div class="number" id="number65"> 65 </div>
+					<div class="number" id="number66"> 66 </div>
+					<div class="number" id="number67"> 67 </div>
+					<div class="number" id="number68"> 68 </div>
+					<div class="number" id="number69"> 69 </div>
+					<div class="number" id="number70"> 70 </div>
+					<div class="number" id="number71"> 71 </div>
+					<div class="number" id="number72"> 72 </div>
+					<div class="number" id="number73"> 73 </div>
+					<div class="number" id="number74"> 74 </div>
+					<div class="number" id="number75"> 75 </div>
+					<div class="number" id="number76"> 76 </div>
+					<div class="number" id="number77"> 77 </div>
+					<div class="number" id="number78"> 78 </div>
+					<div class="number" id="number79"> 79 </div>
+					<div class="number" id="number80"> 80 </div>
+					<div class="number" id="number81"> 81 </div>
+					<div class="number" id="number82"> 82 </div>
+					<div class="number" id="number83"> 83 </div>
+					<div class="number" id="number84"> 84 </div>
+					<div class="number" id="number85"> 85 </div>
+					<div class="number" id="number86"> 86 </div>
+					<div class="number" id="number87"> 87 </div>
+					<div class="number" id="number88"> 88 </div>
+					<div class="number" id="number89"> 89 </div>
+					<div class="number" id="number90"> 90 </div>
+					<div class="number" id="number91"> 91 </div>
+					<div class="number" id="number92"> 92 </div>
+					<div class="number" id="number93"> 93 </div>
+					<div class="number" id="number94"> 94 </div>
+					<div class="number" id="number95"> 95 </div>
+					<div class="number" id="number96"> 96 </div>
+					<div class="number" id="number97"> 97 </div>
+					<div class="number" id="number98"> 98 </div>
+					<div class="number" id="number99"> 99 </div>
+					<div class="number" id="number100"> 100 </div>
+
+
+				</div>
+
+				<div style="display: none;" id="status" class="panel">
+					<p></p>
+				</div>
+				<div style="display: none;" id="status-hide" class="panel-hide"><img src="img/arrow_white_right.png"
+						title="show/hide status panel" /></div>
+
+				<div style="display: none;" id="codetrace" class="panel">
+					can add class "highlighed" to hightlight one line
+					<p id="code1" style="padding-top: 10px;"></p>
+					<p id="code2"></p>
+					<p id="code3"></p>
+					<p id="code4"></p>
+					<p id="code5"></p>
+					<p id="code6"></p>
+					<p id="code7" style="padding-bottom: 10px;"></p>
+				</div>
+				<div style="display: none;" id="codetrace-hide" class="panel-hide"><img src="img/arrow_white_right.png"
+						title="show/hide codetrace panel" /></div>
+				<div style="display: flex; flex-direction: row;" class="inspiration">
+
+					<p>
+						Inspiration : ~
+					</p>
+					<a
+						href="https://www.cs.usfca.edu/~galles/visualization/BST.html">https://www.cs.usfca.edu/~galles/visualization/BST.html</a>
+				</div>
+			</div>
+		</div>
+
+
+
+		<script src="js/graph_library/constant.js"></script>
+		<script src="js/graph_library/properties.js"></script>
+		<script src="js/graph_library/helperObjects.js"></script>
+		<script src="js/graph_library/misc.js"></script>
+		<script src="js/graph_library/Widget.js"></script>
+		<script src="js/graph_library/GraphWidget.js"></script>
+		<script src="js/graph_library/GraphVertexWidget.js"></script>
+		<script src="js/graph_library/GraphEdgeWidget.js"></script>
+		<script src="js/widgets/BstWidget.js"></script>
+
+		<script src="script.js"></script>
+
+
+
+	</body>
+
+
+</body>
+
+</html>
+
+<!-- 
+
+	You Can use this Project For your own usages Not For commertial purpose 
+
+ -->
+
+
+
